@@ -1,0 +1,10 @@
+#!/bin/bash -ex
+
+rm /etc/init/cloud-*
+
+dpkg-reconfigure openssh-server
+sed "s/^.*PasswordAuthentication.*$/PasswordAuthentication yes/g" -i /etc/ssh/sshd_config 
+
+adduser ubuntu
+adduser ubuntu sudo
+
